@@ -1,0 +1,745 @@
+<!DOCTYPE html><script src="sorttable.js"></script><html><body>
+<style>
+table { border-collapse: collapse }
+tr:nth-child(odd)  { background-color: #EEE; }
+tr:nth-child(even)  { background-color: #FFF; }
+tr:nth-child(odd).exec  { background-color: #0F0; }
+tr:nth-child(even).exec  { background-color: #3F3; }
+tr:nth-child(odd).missed  { background-color: #F00; }
+tr:nth-child(even).missed  { background-color: #F33; }
+td, th {
+    border: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #A7C942;
+    color: #ffffff;
+}
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+/* HSV gradient made using http://www.perbang.dk/rgbgradient/ */
+td.coverage00 { background-color: #FF0000; }
+td.coverage10 { background-color: #F83100; }
+td.coverage20 { background-color: #F25F00; }
+td.coverage30 { background-color: #EB8B00; }
+td.coverage40 { background-color: #E5B500; }
+td.coverage50 { background-color: #DFDC00; }
+td.coverage60 { background-color: #B0D800; }
+td.coverage70 { background-color: #81D200; }
+td.coverage80 { background-color: #55CB00; }
+td.coverage90 { background-color: #2CC500; }
+td.coverage100 { background-color: #04BF00; }
+td:nth-child(1) { text-align: right; }
+td:nth-child(2) { text-align: right; }
+td:nth-child(3) { text-align: right; }
+td:nth-child(4) { text-align: right; }
+</style><p>This file was read by GAP before profiling was actived, so lines which were not read but not executed are not marked.</p><table class="sortable">
+<thead><tr><th>Line</th><th>Execs</th><th>Time</th><th>Time+Childs</th><th>Code</th><th>Called Functions</th>
+</tr></thead>
+<tbody>
+<tr class='ignore'><td><a name="line1"></a>1</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line2"></a>2</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line3"></a>3</td><td></td><td></td><td></td><td><span><tt>#W&nbsp;&nbsp;filter.g&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GAP&nbsp;library&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thomas&nbsp;Breuer
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line4"></a>4</td><td></td><td></td><td></td><td><span><tt>#W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&nbsp;Frank&nbsp;Celler
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line5"></a>5</td><td></td><td></td><td></td><td><span><tt>#W&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&nbsp;Martin&nbsp;Schönert
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line6"></a>6</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line7"></a>7</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line8"></a>8</td><td></td><td></td><td></td><td><span><tt>#Y&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;&nbsp;1996,&nbsp;&nbsp;Lehrstuhl&nbsp;D&nbsp;für&nbsp;Mathematik,&nbsp;&nbsp;RWTH&nbsp;Aachen,&nbsp;&nbsp;Germany
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line9"></a>9</td><td></td><td></td><td></td><td><span><tt>#Y&nbsp;&nbsp;(C)&nbsp;1998&nbsp;School&nbsp;Math&nbsp;and&nbsp;Comp.&nbsp;Sci.,&nbsp;University&nbsp;of&nbsp;St&nbsp;Andrews,&nbsp;Scotland
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line10"></a>10</td><td></td><td></td><td></td><td><span><tt>#Y&nbsp;&nbsp;Copyright&nbsp;(C)&nbsp;2002&nbsp;The&nbsp;GAP&nbsp;Group
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line11"></a>11</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line12"></a>12</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;This&nbsp;file&nbsp;deals&nbsp;with&nbsp;filters.&nbsp;Some&nbsp;speed-critical&nbsp;functions&nbsp;are&nbsp;in&nbsp;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line13"></a>13</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;filter1.g,&nbsp;which&nbsp;is&nbsp;compiled
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line14"></a>14</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line15"></a>15</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line16"></a>16</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line17"></a>17</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line18"></a>18</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;"forward&nbsp;declarations&nbsp;that&nbsp;will&nbsp;be&nbsp;picked&nbsp;up&nbsp;in&nbsp;filter1.g
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line19"></a>19</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line20"></a>20</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line21"></a>21</td><td></td><td></td><td></td><td><span><tt>IMPLICATIONS&nbsp;:=&nbsp;fail;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line22"></a>22</td><td></td><td></td><td></td><td><span><tt>CLEAR_IMP_CACHE&nbsp;:=&nbsp;fail;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line23"></a>23</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line24"></a>24</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line25"></a>25</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line26"></a>26</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line27"></a>27</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line28"></a>28</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;FILTERS&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;list&nbsp;of&nbsp;all&nbsp;filters
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line29"></a>29</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line30"></a>30</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;FILTERS>&nbsp;&nbsp;and&nbsp;&nbsp;&lt;RANK_FILTERS>&nbsp;are&nbsp;&nbsp;lists&nbsp;containing&nbsp;at&nbsp;position&nbsp;&lt;i>&nbsp;&nbsp;the
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line31"></a>31</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;filter&nbsp;with&nbsp;number&nbsp;&lt;i>&nbsp;resp.&nbsp;&nbsp;its&nbsp;rank.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line32"></a>32</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line33"></a>33</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FILTERS",&nbsp;[]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line34"></a>34</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line35"></a>35</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line36"></a>36</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line37"></a>37</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line38"></a>38</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;RANK_FILTERS&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;list&nbsp;of&nbsp;all&nbsp;rank&nbsp;of&nbsp;filters
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line39"></a>39</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line40"></a>40</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;FILTERS>&nbsp;&nbsp;and&nbsp;&nbsp;&lt;RANK_FILTERS>&nbsp;are&nbsp;&nbsp;lists&nbsp;containing&nbsp;at&nbsp;position&nbsp;&lt;i>&nbsp;&nbsp;the
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line41"></a>41</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;filter&nbsp;with&nbsp;number&nbsp;&lt;i>&nbsp;resp.&nbsp;&nbsp;its&nbsp;rank.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line42"></a>42</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line43"></a>43</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"RANK_FILTERS",&nbsp;[]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line44"></a>44</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line45"></a>45</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line46"></a>46</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line47"></a>47</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line48"></a>48</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;INFO_FILTERS&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;information&nbsp;about&nbsp;all&nbsp;filters
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line49"></a>49</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line50"></a>50</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;INFO_FILTERS>&nbsp;is&nbsp;a&nbsp;lists&nbsp;&nbsp;&nbsp;containing&nbsp;at&nbsp;position&nbsp;&lt;i>&nbsp;information&nbsp;&nbsp;about
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line51"></a>51</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;the&nbsp;&nbsp;&lt;i>.th&nbsp;&nbsp;&nbsp;filter.&nbsp;&nbsp;This&nbsp;information&nbsp;&nbsp;&nbsp;is&nbsp;stored&nbsp;&nbsp;as&nbsp;&nbsp;number&nbsp;&nbsp;with&nbsp;the
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line52"></a>52</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;following&nbsp;meanings:
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line53"></a>53</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line54"></a>54</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;no&nbsp;additional&nbsp;information
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line55"></a>55</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;1&nbsp;=&nbsp;category&nbsp;kernel
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line56"></a>56</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;2&nbsp;=&nbsp;category
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line57"></a>57</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;3&nbsp;=&nbsp;representation&nbsp;kernel
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line58"></a>58</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;4&nbsp;=&nbsp;representation
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line59"></a>59</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;5&nbsp;=&nbsp;attribute&nbsp;kernel
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line60"></a>60</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;6&nbsp;=&nbsp;attribute
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line61"></a>61</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;7&nbsp;=&nbsp;property&nbsp;kernel
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line62"></a>62</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;8&nbsp;=&nbsp;tester&nbsp;of&nbsp;7
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line63"></a>63</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&nbsp;9&nbsp;=&nbsp;property
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line64"></a>64</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;10&nbsp;=&nbsp;tester&nbsp;of&nbsp;9
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line65"></a>65</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line66"></a>66</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"INFO_FILTERS",&nbsp;[]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line67"></a>67</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line68"></a>68</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FNUM_CATS",&nbsp;[&nbsp;1,&nbsp;&nbsp;2&nbsp;]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line69"></a>69</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FNUM_REPS",&nbsp;[&nbsp;3,&nbsp;&nbsp;4&nbsp;]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line70"></a>70</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FNUM_ATTS",&nbsp;[&nbsp;5,&nbsp;&nbsp;6&nbsp;]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line71"></a>71</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FNUM_PROS",&nbsp;[&nbsp;7,&nbsp;&nbsp;9&nbsp;]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line72"></a>72</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"FNUM_TPRS",&nbsp;[&nbsp;8,&nbsp;10&nbsp;]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line73"></a>73</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line74"></a>74</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line75"></a>75</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line76"></a>76</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line77"></a>77</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;IMM_FLAGS
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line78"></a>78</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line79"></a>79</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;is&nbsp;a&nbsp;flag&nbsp;list.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line80"></a>80</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;For&nbsp;the&nbsp;filters&nbsp;in&nbsp;`FILTERS{&nbsp;TRUES_FLAGS(&nbsp;IMM_FLAGS&nbsp;)&nbsp;}',
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line81"></a>81</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;no&nbsp;immediate&nbsp;method&nbsp;is&nbsp;installed.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line82"></a>82</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;(The&nbsp;installation&nbsp;of&nbsp;immediate&nbsp;methods&nbsp;changes&nbsp;`IMM_FLAGS'.)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line83"></a>83</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line84"></a>84</td><td></td><td></td><td></td><td><span><tt>IMM_FLAGS&nbsp;:=&nbsp;FLAGS_FILTER(&nbsp;IS_OBJECT&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line85"></a>85</td><td></td><td></td><td></td><td><span><tt>#T&nbsp;EMPTY_FLAGS&nbsp;not&nbsp;yet&nbsp;defined&nbsp;!
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line86"></a>86</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line87"></a>87</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line88"></a>88</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line89"></a>89</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line90"></a>90</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line91"></a>91</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;Setter(&nbsp;&lt;filter>&nbsp;)&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;&nbsp;setter&nbsp;of&nbsp;a&nbsp;&lt;filter>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line92"></a>92</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line93"></a>93</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"Setter",&nbsp;SETTER_FILTER&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line94"></a>94</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line95"></a>95</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line96"></a>96</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line97"></a>97</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line98"></a>98</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;Tester(&nbsp;&lt;filter>&nbsp;)&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;&nbsp;tester&nbsp;of&nbsp;a&nbsp;&lt;filter>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line99"></a>99</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line100"></a>100</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"Tester",&nbsp;TESTER_FILTER&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line101"></a>101</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line102"></a>102</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line103"></a>103</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line104"></a>104</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line105"></a>105</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line106"></a>106</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line107"></a>107</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line108"></a>108</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line109"></a>109</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line110"></a>110</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line111"></a>111</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;InstallTrueMethodNewFilter(&nbsp;&lt;to>,&nbsp;&lt;from>&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line112"></a>112</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line113"></a>113</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;If&nbsp;&lt;from>&nbsp;is&nbsp;a&nbsp;new&nbsp;filter&nbsp;then&nbsp;&nbsp;it&nbsp;cannot&nbsp;occur&nbsp;in&nbsp;&nbsp;the&nbsp;cache.&nbsp;&nbsp;Therefore
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line114"></a>114</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;we&nbsp;do&nbsp;not&nbsp;flush&nbsp;the&nbsp;cache.&nbsp;&nbsp;&lt;from>&nbsp;should&nbsp;a&nbsp;basic&nbsp;&nbsp;filter&nbsp;not&nbsp;an&nbsp;`and'&nbsp;of
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line115"></a>115</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;from.&nbsp;This&nbsp;should&nbsp;only&nbsp;be&nbsp;used&nbsp;in&nbsp;the&nbsp;file&nbsp;"type.g".
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line116"></a>116</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line117"></a>117</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"InstallTrueMethodNewFilter",&nbsp;function&nbsp;(&nbsp;tofilt,&nbsp;from&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line118"></a>118</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;local&nbsp;&nbsp;&nbsp;imp;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line119"></a>119</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line120"></a>120</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Check&nbsp;that&nbsp;no&nbsp;filter&nbsp;implies&nbsp;`IsMutable'.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line121"></a>121</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;(If&nbsp;this&nbsp;would&nbsp;be&nbsp;allowed&nbsp;then&nbsp;`Immutable'&nbsp;would&nbsp;be&nbsp;able
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line122"></a>122</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;to&nbsp;create&nbsp;paradoxical&nbsp;objects.)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line123"></a>123</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS_SUBSET_FLAGS(&nbsp;FLAGS_FILTER(&nbsp;tofilt&nbsp;),
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line124"></a>124</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FLAGS_FILTER(&nbsp;IS_MUTABLE_OBJ&nbsp;)&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line125"></a>125</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;not&nbsp;IS_IDENTICAL_OBJ(&nbsp;from,&nbsp;IS_MUTABLE_OBJ&nbsp;)&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line126"></a>126</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Error(&nbsp;"filter&nbsp;&lt;from>&nbsp;must&nbsp;not&nbsp;imply&nbsp;`IsMutable'"&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line127"></a>127</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line128"></a>128</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line129"></a>129</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;imp&nbsp;:=&nbsp;[];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line130"></a>130</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;imp[1]&nbsp;:=&nbsp;FLAGS_FILTER(&nbsp;tofilt&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line131"></a>131</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;imp[2]&nbsp;:=&nbsp;FLAGS_FILTER(&nbsp;from&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line132"></a>132</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;ADD_LIST(&nbsp;IMPLICATIONS,&nbsp;imp&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line133"></a>133</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;InstallHiddenTrueMethod(&nbsp;tofilt,&nbsp;from&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line134"></a>134</td><td></td><td></td><td></td><td><span><tt>end&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line135"></a>135</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line136"></a>136</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line137"></a>137</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line138"></a>138</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line139"></a>139</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;InstallTrueMethod(&nbsp;&lt;newfil>,&nbsp;&lt;filt>&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line140"></a>140</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line141"></a>141</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#GAPDoc&nbsp;Label="InstallTrueMethod">
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line142"></a>142</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line143"></a>143</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Func&nbsp;Name="InstallTrueMethod"&nbsp;Arg="newfil,&nbsp;filt"/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line144"></a>144</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line145"></a>145</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line146"></a>146</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;It&nbsp;may&nbsp;happen&nbsp;that&nbsp;a&nbsp;filter&nbsp;&lt;A>newfil&lt;/A>&nbsp;shall&nbsp;be&nbsp;implied&nbsp;by&nbsp;another
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line147"></a>147</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;filter&nbsp;&lt;A>filt&lt;/A>,&nbsp;which&nbsp;is&nbsp;usually&nbsp;a&nbsp;meet&nbsp;of&nbsp;other&nbsp;properties,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line148"></a>148</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;or&nbsp;the&nbsp;meet&nbsp;of&nbsp;some&nbsp;properties&nbsp;and&nbsp;some&nbsp;categories.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line149"></a>149</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;Such&nbsp;a&nbsp;logical&nbsp;implication&nbsp;can&nbsp;be&nbsp;installed&nbsp;as&nbsp;an&nbsp;&lt;Q>immediate&nbsp;method&lt;/Q>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line150"></a>150</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;for&nbsp;&lt;A>newfil&lt;/A>&nbsp;that&nbsp;requires&nbsp;&lt;A>filt&lt;/A>&nbsp;and&nbsp;that&nbsp;always&nbsp;returns
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line151"></a>151</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;K>true&lt;/K>.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line152"></a>152</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;(This&nbsp;should&nbsp;not&nbsp;be&nbsp;mixed&nbsp;up&nbsp;with&nbsp;the&nbsp;methods&nbsp;installed&nbsp;via
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line153"></a>153</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Ref&nbsp;Func="InstallImmediateMethod"/>,&nbsp;which&nbsp;have&nbsp;to&nbsp;be&nbsp;called&nbsp;at&nbsp;runtime
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line154"></a>154</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;for&nbsp;the&nbsp;actual&nbsp;objects.)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line155"></a>155</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;P/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line156"></a>156</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Ref&nbsp;Func="InstallTrueMethod"/>&nbsp;has&nbsp;the&nbsp;effect&nbsp;that&nbsp;&lt;A>newfil&lt;/A>&nbsp;becomes
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line157"></a>157</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;an&nbsp;implied&nbsp;filter&nbsp;of&nbsp;&lt;A>filt&lt;/A>,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line158"></a>158</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;see&amp;nbsp;&lt;Ref&nbsp;Sect="Filters"/>.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line159"></a>159</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;P/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line160"></a>160</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;For&nbsp;example,&nbsp;each&nbsp;cyclic&nbsp;group&nbsp;is&nbsp;abelian,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line161"></a>161</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;each&nbsp;finite&nbsp;vector&nbsp;space&nbsp;is&nbsp;finite&nbsp;dimensional,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line162"></a>162</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;and&nbsp;each&nbsp;division&nbsp;ring&nbsp;is&nbsp;integral.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line163"></a>163</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;The&nbsp;first&nbsp;of&nbsp;these&nbsp;implications&nbsp;is&nbsp;installed&nbsp;as&nbsp;follows.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line164"></a>164</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;P/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line165"></a>165</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Log>&lt;![CDATA[
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line166"></a>166</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;InstallTrueMethod(&nbsp;IsCommutative,&nbsp;IsGroup&nbsp;and&nbsp;IsCyclic&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line167"></a>167</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;]]>&lt;/Log>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line168"></a>168</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;P/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line169"></a>169</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;Contrary&nbsp;to&nbsp;the&nbsp;immediate&nbsp;methods&nbsp;installed&nbsp;with
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line170"></a>170</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Ref&nbsp;Func="InstallImmediateMethod"/>,&nbsp;logical&nbsp;implications&nbsp;cannot&nbsp;be
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line171"></a>171</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;switched&nbsp;off.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line172"></a>172</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;This&nbsp;means&nbsp;that&nbsp;after&nbsp;the&nbsp;above&nbsp;implication&nbsp;has&nbsp;been&nbsp;installed,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line173"></a>173</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;one&nbsp;can&nbsp;rely&nbsp;on&nbsp;the&nbsp;fact&nbsp;that&nbsp;every&nbsp;object&nbsp;in&nbsp;the&nbsp;filter
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line174"></a>174</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;C>IsGroup&nbsp;and&nbsp;IsCyclic&lt;/C>&nbsp;will&nbsp;also&nbsp;be&nbsp;in&nbsp;the&nbsp;filter
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line175"></a>175</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Ref&nbsp;Func="IsCommutative"/>.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line176"></a>176</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line177"></a>177</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line178"></a>178</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#/GAPDoc>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line179"></a>179</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line180"></a>180</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"InstallTrueMethod",&nbsp;function&nbsp;(&nbsp;tofilt,&nbsp;from&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line181"></a>181</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line182"></a>182</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;InstallTrueMethodNewFilter(&nbsp;tofilt,&nbsp;from&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line183"></a>183</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line184"></a>184</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;clear&nbsp;the&nbsp;caches&nbsp;because&nbsp;we&nbsp;do&nbsp;not&nbsp;know&nbsp;if&nbsp;filter&nbsp;&lt;from>&nbsp;is&nbsp;new
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line185"></a>185</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;CLEAR_HIDDEN_IMP_CACHE(&nbsp;from&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line186"></a>186</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;CLEAR_IMP_CACHE();
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line187"></a>187</td><td></td><td></td><td></td><td><span><tt>end&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line188"></a>188</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line189"></a>189</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line190"></a>190</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line191"></a>191</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line192"></a>192</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;NewFilter(&nbsp;&lt;name>[,&nbsp;&lt;implied>][,&nbsp;&lt;rank>]&nbsp;)&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;create&nbsp;a&nbsp;new&nbsp;filter
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line193"></a>193</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line194"></a>194</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#GAPDoc&nbsp;Label="NewFilter">
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line195"></a>195</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line196"></a>196</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Func&nbsp;Name="NewFilter"&nbsp;Arg="name[,&nbsp;rank]"/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line197"></a>197</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line198"></a>198</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line199"></a>199</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Ref&nbsp;Func="NewFilter"/>&nbsp;returns&nbsp;a&nbsp;simple&nbsp;filter&nbsp;with&nbsp;name&nbsp;&lt;A>name&lt;/A>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line200"></a>200</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;(see&amp;nbsp;&lt;Ref&nbsp;Sect="Other&nbsp;Filters"/>).
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line201"></a>201</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;The&nbsp;optional&nbsp;second&nbsp;argument&nbsp;&lt;A>rank&lt;/A>&nbsp;denotes&nbsp;the&nbsp;incremental&nbsp;rank
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line202"></a>202</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;(see&amp;nbsp;&lt;Ref&nbsp;Sect="Filters"/>)&nbsp;of&nbsp;the&nbsp;filter,
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line203"></a>203</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;the&nbsp;default&nbsp;value&nbsp;is&nbsp;1.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line204"></a>204</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;P/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line205"></a>205</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;The&nbsp;default&nbsp;value&nbsp;of&nbsp;the&nbsp;new&nbsp;simple&nbsp;filter&nbsp;for&nbsp;each&nbsp;object&nbsp;is
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line206"></a>206</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;K>false&lt;/K>.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line207"></a>207</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line208"></a>208</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line209"></a>209</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#/GAPDoc>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line210"></a>210</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line211"></a>211</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"NewFilter",&nbsp;function(&nbsp;arg&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line212"></a>212</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;local&nbsp;&nbsp;&nbsp;name,&nbsp;&nbsp;implied,&nbsp;&nbsp;rank,&nbsp;&nbsp;filter;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line213"></a>213</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line214"></a>214</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;LEN_LIST(&nbsp;arg&nbsp;)&nbsp;=&nbsp;3&nbsp;&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line215"></a>215</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[1];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line216"></a>216</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implied&nbsp;:=&nbsp;arg[2];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line217"></a>217</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[3];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line218"></a>218</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;elif&nbsp;LEN_LIST(&nbsp;arg&nbsp;)&nbsp;=&nbsp;2&nbsp;&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line219"></a>219</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;IS_INT(&nbsp;arg[2]&nbsp;)&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line220"></a>220</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[1];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line221"></a>221</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implied&nbsp;:=&nbsp;0;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line222"></a>222</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[2];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line223"></a>223</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line224"></a>224</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[1];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line225"></a>225</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implied&nbsp;:=&nbsp;arg[2];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line226"></a>226</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;1;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line227"></a>227</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line228"></a>228</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;else
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line229"></a>229</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;arg[1];
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line230"></a>230</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;implied&nbsp;:=&nbsp;0;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line231"></a>231</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rank&nbsp;&nbsp;&nbsp;&nbsp;:=&nbsp;1;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line232"></a>232</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line233"></a>233</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line234"></a>234</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Create&nbsp;the&nbsp;filter.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line235"></a>235</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;filter&nbsp;:=&nbsp;NEW_FILTER(&nbsp;name&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line236"></a>236</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;implied&nbsp;&lt;>&nbsp;0&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line237"></a>237</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InstallTrueMethodNewFilter(&nbsp;implied,&nbsp;filter&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line238"></a>238</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line239"></a>239</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line240"></a>240</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Do&nbsp;some&nbsp;administrational&nbsp;work.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line241"></a>241</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;FILTERS[&nbsp;FLAG1_FILTER(&nbsp;filter&nbsp;)&nbsp;]&nbsp;:=&nbsp;filter;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line242"></a>242</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;IMM_FLAGS:=&nbsp;AND_FLAGS(&nbsp;IMM_FLAGS,&nbsp;FLAGS_FILTER(&nbsp;filter&nbsp;)&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line243"></a>243</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;RANK_FILTERS[&nbsp;FLAG1_FILTER(&nbsp;filter&nbsp;)&nbsp;]&nbsp;:=&nbsp;rank;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line244"></a>244</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;INFO_FILTERS[&nbsp;FLAG1_FILTER(&nbsp;filter&nbsp;)&nbsp;]&nbsp;:=&nbsp;0;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line245"></a>245</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line246"></a>246</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Return&nbsp;the&nbsp;filter.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line247"></a>247</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;filter;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line248"></a>248</td><td></td><td></td><td></td><td><span><tt>end&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line249"></a>249</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line250"></a>250</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line251"></a>251</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line252"></a>252</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line253"></a>253</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;DeclareFilter(&nbsp;&lt;name>[,&nbsp;&lt;implied>][,&nbsp;&lt;rank>]&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line254"></a>254</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line255"></a>255</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#GAPDoc&nbsp;Label="DeclareFilter">
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line256"></a>256</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line257"></a>257</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Func&nbsp;Name="DeclareFilter"&nbsp;Arg="name[,&nbsp;rank]"/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line258"></a>258</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line259"></a>259</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line260"></a>260</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;does&nbsp;the&nbsp;same&nbsp;as&nbsp;&lt;Ref&nbsp;Func="NewFilter"/>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line261"></a>261</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;and&nbsp;additionally&nbsp;makes&nbsp;the&nbsp;variable&nbsp;&lt;A>name&lt;/A>&nbsp;read-only.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line262"></a>262</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/Description>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line263"></a>263</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;/ManSection>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line264"></a>264</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;&lt;#/GAPDoc>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line265"></a>265</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line266"></a>266</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"DeclareFilter",&nbsp;function(&nbsp;arg&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line267"></a>267</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;BIND_GLOBAL(&nbsp;arg[1],&nbsp;CALL_FUNC_LIST(&nbsp;NewFilter,&nbsp;arg&nbsp;)&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line268"></a>268</td><td></td><td></td><td></td><td><span><tt>end&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line269"></a>269</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line270"></a>270</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line271"></a>271</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line272"></a>272</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line273"></a>273</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;NamesFilter(&nbsp;&lt;flags>&nbsp;)&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;.&nbsp;list&nbsp;of&nbsp;names&nbsp;of&nbsp;the&nbsp;filters&nbsp;in&nbsp;&lt;flags>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line274"></a>274</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line275"></a>275</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"NamesFilter",&nbsp;function(&nbsp;flags&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line276"></a>276</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;local&nbsp;&nbsp;bn,&nbsp;&nbsp;i;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line277"></a>277</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line278"></a>278</td><td>120</td><td>280</td><td>280</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;IS_FUNCTION(flags)&nbsp;&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line279"></a>279</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:=&nbsp;FLAGS_FILTER(flags);
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line280"></a>280</td><td>60</td><td>133</td><td>133</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line281"></a>281</td><td>60</td><td>148</td><td>148</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;IS_LIST(flags)&nbsp;&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line282"></a>282</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bn&nbsp;:=&nbsp;SHALLOW_COPY_OBJ(flags);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line283"></a>283</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;else
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line284"></a>284</td><td>60</td><td>485</td><td>485</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bn&nbsp;:=&nbsp;SHALLOW_COPY_OBJ(TRUES_FLAGS(flags));
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line285"></a>285</td><td>60</td><td>138</td><td>138</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line286"></a>286</td><td>60</td><td>145</td><td>145</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;&nbsp;in&nbsp;&nbsp;[&nbsp;1&nbsp;..&nbsp;LEN_LIST(bn)&nbsp;]&nbsp;&nbsp;do
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line287"></a>287</td><td>72</td><td>191</td><td>191</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;IsBound(FILTERS[&nbsp;bn[i]&nbsp;])&nbsp;&nbsp;then
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line288"></a>288</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bn[i]&nbsp;:=&nbsp;STRING_INT(&nbsp;bn[i]&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line289"></a>289</td><td></td><td></td><td></td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line290"></a>290</td><td>72</td><td>193</td><td>193</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bn[i]&nbsp;:=&nbsp;NAME_FUNC(FILTERS[&nbsp;bn[i]&nbsp;]);
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line291"></a>291</td><td>72</td><td>163</td><td>163</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fi;
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line292"></a>292</td><td>60</td><td>134</td><td>134</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;od;
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line293"></a>293</td><td>60</td><td>170</td><td>170</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;bn;
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line294"></a>294</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line295"></a>295</td><td></td><td></td><td></td><td><span><tt>end&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line296"></a>296</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line297"></a>297</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line298"></a>298</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line299"></a>299</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line300"></a>300</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line301"></a>301</td><td></td><td></td><td></td><td><span><tt>#F&nbsp;&nbsp;IsFilter(&nbsp;&lt;x>&nbsp;)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line302"></a>302</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line303"></a>303</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;function&nbsp;to&nbsp;test&nbsp;whether&nbsp;&lt;x>&nbsp;is&nbsp;a&nbsp;filter.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line304"></a>304</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;(This&nbsp;is&nbsp;*not*&nbsp;a&nbsp;filter&nbsp;itself!.)
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line305"></a>305</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line306"></a>306</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"IsFilter",
+</tt></span></td><td><span></span></td></tr>
+<tr class='exec'><td><a name="line307"></a>307</td><td>109</td><td>334</td><td>334</td><td><span><tt>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;->&nbsp;IS_OPERATION(&nbsp;x&nbsp;)&nbsp;and&nbsp;(&nbsp;FLAG1_FILTER(&nbsp;x&nbsp;)&nbsp;&lt;>&nbsp;0&nbsp;or&nbsp;x&nbsp;in&nbsp;FILTERS&nbsp;)&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line308"></a>308</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line309"></a>309</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line310"></a>310</td><td></td><td></td><td></td><td><span><tt>##&nbsp;Global&nbsp;Rank&nbsp;declarations
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line311"></a>311</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line312"></a>312</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line313"></a>313</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line314"></a>314</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;SUM_FLAGS
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line315"></a>315</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line316"></a>316</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;Is&nbsp;an&nbsp;``infinity''&nbsp;value&nbsp;for&nbsp;method&nbsp;installations.&nbsp;It&nbsp;is&nbsp;more&nbsp;than&nbsp;can
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line317"></a>317</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;be&nbsp;reached&nbsp;by&nbsp;any&nbsp;filter&nbsp;arrangement.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line318"></a>318</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"SUM_FLAGS",&nbsp;10000&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line319"></a>319</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line320"></a>320</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line321"></a>321</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line322"></a>322</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line323"></a>323</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;GETTER_FLAGS
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line324"></a>324</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line325"></a>325</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;is&nbsp;the&nbsp;flag&nbsp;value&nbsp;used&nbsp;for&nbsp;the&nbsp;installation&nbsp;of&nbsp;the&nbsp;system&nbsp;getter.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line326"></a>326</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"GETTER_FLAGS",&nbsp;2*SUM_FLAGS&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line327"></a>327</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line328"></a>328</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line329"></a>329</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line330"></a>330</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line331"></a>331</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;NICE_FLAGS
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line332"></a>332</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line333"></a>333</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;is&nbsp;the&nbsp;rank&nbsp;of&nbsp;`IsHandledByNiceMonomorphism'.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line334"></a>334</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL("NICE_FLAGS",QUO_INT(SUM_FLAGS,30));
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line335"></a>335</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line336"></a>336</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line337"></a>337</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line338"></a>338</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line339"></a>339</td><td></td><td></td><td></td><td><span><tt>#V&nbsp;&nbsp;CANONICAL_BASIS_FLAGS
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line340"></a>340</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line341"></a>341</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;is&nbsp;the&nbsp;incremental&nbsp;rank&nbsp;used&nbsp;for&nbsp;`Basis'&nbsp;methods&nbsp;that&nbsp;delegate&nbsp;to
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line342"></a>342</td><td></td><td></td><td></td><td><span><tt>##&nbsp;&nbsp;`CanonicalBasis'.
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line343"></a>343</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line344"></a>344</td><td></td><td></td><td></td><td><span><tt>BIND_GLOBAL(&nbsp;"CANONICAL_BASIS_FLAGS",&nbsp;QUO_INT(SUM_FLAGS,5)&nbsp;);
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line345"></a>345</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line346"></a>346</td><td></td><td></td><td></td><td><span><tt>
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line347"></a>347</td><td></td><td></td><td></td><td><span><tt>#############################################################################
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line348"></a>348</td><td></td><td></td><td></td><td><span><tt>##
+</tt></span></td><td><span></span></td></tr>
+<tr class='ignore'><td><a name="line349"></a>349</td><td></td><td></td><td></td><td><span><tt>#E
+</tt></span></td><td><span></span></td></tr>
+</tbody>
+</table></body></html>
