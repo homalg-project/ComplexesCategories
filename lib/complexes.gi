@@ -531,13 +531,13 @@ InstallMethod( Display,
 
    Print( "\n-----------------------------------------------------------------\n" );
 
-   Print( "In index ", String( i ) );
+   Print( TextAttr.underscore, TextAttr.(2),  "In index ", String( i ) , TextAttr.reset );
 
-   Print( "\n\nObject is\n" );
+   Print( "\n\n", TextAttr.underscore, TextAttr.(2), "Object is", TextAttr.reset, "\n" );
 
    Display( C[ i ] );
 
-   Print( "\nDifferential is\n" );
+   Print( "\n", TextAttr.underscore, TextAttr.(2), "Differential is", TextAttr.reset, "\n" );
 
    Display( C^i );
 
@@ -952,6 +952,36 @@ InstallMethod( HomologySupport,
   od;
   return l;
 end );
+
+##
+InstallMethod( ObjectsSupport, 
+               [ IsChainOrCochainComplex, IsInt, IsInt ],
+  function( C, m, n )
+  local l, i;
+  l := [ ];
+  for i in [ m .. n ] do 
+  if not IsZeroForObjects( C[i] ) then 
+     Add( l, i );
+  fi;
+  od;
+  return l;
+end );
+
+
+##
+InstallMethod( DifferentialsSupport, 
+               [ IsChainOrCochainComplex, IsInt, IsInt ],
+  function( C, m, n )
+  local l, i;
+  l := [ ];
+  for i in [ m .. n ] do 
+  if not IsZeroForObjects( C^i ) then 
+     Add( l, i );
+  fi;
+  od;
+  return l;
+end );
+
 
 InstallMethod( IsWellDefined, 
                [ IsCochainComplex, IsInt, IsInt ],
