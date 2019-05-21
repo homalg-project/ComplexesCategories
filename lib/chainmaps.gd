@@ -38,7 +38,6 @@ DeclareCategory( "IsBoundedAboveCochainMorphism", IsBoundedAboveChainOrCochainMo
 DeclareCategory( "IsBoundedCochainMorphism", IsBoundedChainOrCochainMorphism and IsCochainMorphism );
 #!  @EndGroup
 #!  @Group 10
-#!  @EndSection
 
 DeclareCategoryFamily( "IsChainMorphism" );
 DeclareCategoryFamily( "IsCochainMorphism" );
@@ -112,7 +111,6 @@ DeclareOperation( "StalkChainMorphism", [ IsCapCategoryMorphism, IsInt ] );
 #! @Arguments f, n
 DeclareOperation( "StalkCochainMorphism", [ IsCapCategoryMorphism, IsInt ] );
 
-#!  @EndSection
 ######################################
 #
 #  Attribtes, Operations ..
@@ -277,9 +275,9 @@ DeclareAttribute( "NaturalMorphismFromMappingCylinderInMappingCone", IsChainOrCo
 DeclareAttribute( "HomotopyMorphisms", IsCapCategoryMorphism );
 
 DeclareOperation( "MappingConeColift", [ IsChainOrCochainMorphism, IsChainOrCochainMorphism ] );
-DeclareOperation( "MappingConePseudoFunctorial", [ IsChainOrCochainMorphism, IsChainOrCochainMorphism, IsChainOrCochainMorphism, IsChainOrCochainMorphism ] );
-
-#!  @EndSection
+DeclareOperation( "MappingConePseudoFunctorial", 
+  [ IsChainOrCochainMorphism, IsChainOrCochainMorphism,
+      IsChainOrCochainMorphism, IsChainOrCochainMorphism ] );
 
 #!  @Section Properties
 
@@ -297,7 +295,6 @@ DeclareProperty( "IsQuasiIsomorphism", IsChainOrCochainMorphism );
 #! @Arguments phi
 DeclareProperty( "IsNullHomotopic", IsCapCategoryMorphism );
 
-#!  @EndSection
 
 #!  @Section Operations
 
@@ -385,11 +382,11 @@ DeclareOperation( "Display", [ IsChainOrCochainMorphism, IsInt, IsInt ] );
 #!  The command checks if the morphism is well defined between $m$ and $n$. 
 #!  @Arguments true or false
 DeclareOperation( "IsWellDefined", [ IsChainOrCochainMorphism, IsInt, IsInt ] );
-#!  @EndSection 
+
 
 #!  @Section Examples
 #!  @InsertChunk vec_2
-#!  @EndSection
+
 #######################################
 #
 #  Global functions and variables
