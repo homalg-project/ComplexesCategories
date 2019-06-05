@@ -913,7 +913,7 @@ InstallMethod( StalkChainComplex,
                [ IsCapCategoryObject, IsInt ],
   
   function( obj, n )
-    local zero_obj, zero, diffs, complex;
+    local zero_obj, zero, diffs, complex, complex_n;
     
     zero_obj := ZeroObject( CapCategory( obj ) );
     
@@ -927,6 +927,9 @@ InstallMethod( StalkChainComplex,
     
     SetUpperBound( complex, n + 1 );
     
+    # See IsEqualForCacheForObjects to understand why I am adding the next line
+    complex_n := complex[ n ];
+    
     return complex;
   
 end );
@@ -935,7 +938,7 @@ end );
 InstallMethod( StalkCochainComplex,
                     [ IsCapCategoryObject, IsInt ],
   function( obj, n )
-    local zero_obj, zero, diffs, complex;
+    local zero_obj, zero, diffs, complex, complex_n;
     
     zero_obj := ZeroObject( CapCategory( obj ) );
     
@@ -948,6 +951,9 @@ InstallMethod( StalkCochainComplex,
     SetLowerBound( complex, n - 1 );
     
     SetUpperBound( complex, n + 1 );
+    
+    # See IsEqualForCacheForObjects to understand why I am adding the next line
+    complex_n := complex[ n ];
     
     return complex;
   
@@ -1388,6 +1394,55 @@ InstallMethod( IsWellDefined,
     
     return IsWellDefined( C, ActiveLowerBound( C ) + 1, ActiveUpperBound( C ) - 1 );
   
+end );
+
+
+BindGlobal( "RANDOM_CHAIN_COMPLEX",
+  function( chains, m, n, c )
+    local cat, f, L, g, i, stop;
+    
+    cat := UnderlyingCategory( chains );
+    
+    if n - m < 2 then
+      
+      Error( "wrong input" );
+      
+    elif n - m = 2 then
+    
+      return StalkChainComplex( RandomObject( cat, c ), m + 1 );
+      
+    else
+      
+      stop := false;
+      
+      while not stop do
+      
+        f := RandomMorphism( cat, c );
+      
+        if not IsEpimorphism( f ) then
+        
+          stop := true;
+        
+        fi;
+      
+      od;
+      
+      L := [ f ];
+      
+      for i in [ 1 .. n - m - 3 ] do
+        
+        g := PreCompose(
+              CokernelProjection( L[ 1 ] ),
+                RandomMorphismWithFixedSource( CokernelObject( L[1] ), c ) );
+        
+        Add( L, g, 1 );
+        
+      od;
+      
+      return ChainComplex( L, m + 2 );
+      
+    fi;
+      
 end );
 
 ######################################
