@@ -450,3 +450,4 @@ DeclareAttribute( "FAL_BOUND", IsChainOrCochainMorphism );
 DeclareProperty( "HAS_FAL_BOUND", IsChainOrCochainMorphism );
 
 DeclareProperty( "HAS_FAL_BOUND", IsChainOrCochainMorphism );
+
