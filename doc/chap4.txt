@@ -1,0 +1,252 @@
+  
+  [1X4 [33X[0;0YFunctors[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YBasic functors for complex categories.[133X[101X
+  
+  [1X4.1-1 HomologyFunctor[101X
+  
+  [33X[1;0Y[29X[2XHomologyFunctor[102X( [3XCh_\bullet(A)[103X, [3XA[103X, [3Xn[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCohomologyFunctor[102X( [3XCh^\bullet(A)[103X, [3XA[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  first  argument  in the input must be the chain (resp. cochain) complex
+  category  of an abelian category [23XA[123X, the second argument is an integer [3Xn[103X. The
+  output     is    the    [23Xn[123X'th    homology    (resp.    cohomology)    functor
+  [23X\mathrm{Ch}_\bullet(A)   \rightarrow   A[123X   (   resp.  [23X\mathrm{Ch}^\bullet(A)
+  \rightarrow A[123X)[133X
+  
+  [1X4.1-2 ShiftFunctor[101X
+  
+  [33X[1;0Y[29X[2XShiftFunctor[102X( [3XComp(A)[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  inputs are complex category [23X\mathrm{Comp}(A)[123X and an integer. The output
+  is  a  the endofunctor [23XT[n][123X that sends any complex [23XC[123X to [23XC[n][123X and any complex
+  morphism  [23X\phi:C\rightarrow  D[123X  to  [23X\phi[n]:C[n]\rightarrow  D[n][123X. The shift
+  chain  complex  [23XC[n][123X  of  a  chain  complex  [23XC[123X is defined by [23XC[n]_i=C_{n+i},
+  d_{i}^{C[n]}=(-1)^{n}d_{n+i}^{C}[123X  and  the same for chain complex morphisms,
+  i.e.,  [23X\phi[n]_i=\phi_{n+i}[123X.  The  same  holds  for  cochain  complexes  and
+  morphisms.[133X
+  
+  [1X4.1-3 UnsignedShiftFunctor[101X
+  
+  [33X[1;0Y[29X[2XUnsignedShiftFunctor[102X( [3XComp(A)[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe  inputs are complex category [23X\mathrm{Comp}(A)[123X and an integer. The output
+  is  a  the endofunctor [23XT[n][123X that sends any complex [23XC[123X to [23XC[n][123X and any complex
+  morphism  [23X\phi:C\rightarrow  D[123X  to  [23X\phi[n]:C[n]\rightarrow  D[n][123X. The shift
+  chain  complex  [23XC[n][123X  of  a  chain  complex  [23XC[123X is defined by [23XC[n]_i=C_{n+i},
+  d_{i}^{C[n]}=d_{n+i}^{C}[123X  and  the  same  for chain complex morphisms, i.e.,
+  [23X\phi[n]_i=\phi_{n+i}[123X. The same holds for cochain complexes and morphisms.[133X
+  
+  [1X4.1-4 ChainToCochainComplexFunctor[101X
+  
+  [33X[1;0Y[29X[2XChainToCochainComplexFunctor[102X( [3XCh(A)_\bullet[103X, [3XCh(A)^\bullet[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe arguments are [23X\mathrm{Ch}_\bullet(A)[123X and [23X\mathrm{Ch}^\bullet(A)[123X for some
+  category        [23XA[123X.        The        output       is       the       functor
+  [23XF:\mathrm{Ch}_\bullet(A)\rightarrow\mathrm{Ch}^\bullet(A)[123X     defined     by
+  [23XC_{\bullet}\mapsto  C^{\bullet}[123X for any for any chain complex [23XC_{\bullet}\in
+  \mathrm{Ch}_\bullet(A)[123X  and  by [23X\phi_{\bullet}\mapsto \phi^{\bullet}[123X for any
+  morphism     [23X\phi_\bullet[123X     where     [23XC^\bullet_{i}=C_\bullet^{-i}[123X     and
+  [23X\phi^\bullet_{i}=\phi_\bullet^{-i}[123X for any [23Xi\in\mathbb{Z}[123X.[133X
+  
+  [1X4.1-5 CochainToChainComplexFunctor[101X
+  
+  [33X[1;0Y[29X[2XCochainToChainComplexFunctor[102X( [3XCh(A)^\bullet[103X, [3XCh(A)_\bullet[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe arguments are [23X\mathrm{Ch}^\bullet(A)[123X and [23X\mathrm{Ch}_\bullet(A)[123X for some
+  category        [23XA[123X.        The        output       is       the       functor
+  [23XF:\mathrm{Ch}^\bullet(A)\rightarrow\mathrm{Ch}_\bullet(A)[123X     defined     by
+  [23XC^\bullet\mapsto  C_\bullet[123X  for  any  for  any  chain  complex [23XC^\bullet\in
+  \mathrm{Ch}^\bullet(A)[123X  and  by  [23X\phi^\bullet\mapsto  \phi_\bullet[123X  for  any
+  morphism     [23X\phi^\bullet[123X     where     [23XC_\bullet^{i}=C^\bullet_{-i}[123X     and
+  [23X\phi_\bullet^{i}=\phi^\bullet_{-i}[123X for any [23Xi\in\mathbb{Z}[123X.[133X
+  
+  [1X4.1-6 ExtendFunctorToChainComplexCategories[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToChainComplexCategories[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe input is a functor [23XF:A\rightarrow B[123X. The output is its extention functor[133X
+  
+  
+  [24X[33X[0;6Y\mathrm{Ch}_\bullet                      F:\mathrm{Ch}_\bullet(A)\rightarrow
+  \mathrm{Ch}_\bullet(B).[133X
+  
+  [124X
+  
+  [1X4.1-7 ExtendFunctorToCochainComplexCategories[101X
+  
+  [33X[1;0Y[29X[2XExtendFunctorToCochainComplexCategories[102X( [3XF[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YThe input is a functor [23XF:A\rightarrow B[123X. The output is its extention functor[133X
+  
+  
+  [24X[33X[0;6Y\mathrm{Ch}^\bullet                      F:\mathrm{Ch}^\bullet(A)\rightarrow
+  \mathrm{Ch}^\bullet(B)[133X
+  
+  [124X
+  
+  [33X[0;0Y.[133X
+  
+  [1X4.1-8 BrutalTruncationAboveFunctor[101X
+  
+  [33X[1;0Y[29X[2XBrutalTruncationAboveFunctor[102X( [3XCom(A)[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya endofunctor[133X
+  
+  [33X[0;0YThe  input  is a complex category [23X\mathrm{Com}(A)[123X of some Cap category [23XA[123X and
+  an  integer [23Xn[123X. The output is an endofunctor from [23X\mathrm{Com}(A) \rightarrow
+  \mathrm{Com}(A)[123X.[133X
+  
+  [1X4.1-9 BrutalTruncationBelowFunctor[101X
+  
+  [33X[1;0Y[29X[2XBrutalTruncationBelowFunctor[102X( [3XCom(A)[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya endofunctor[133X
+  
+  [33X[0;0YThe  input  is a complex category [23X\mathrm{Com}(A)[123X of some Cap category [23XA[123X and
+  an  integer [23Xn[123X. The output is an endofunctor from [23X\mathrm{Com}(A) \rightarrow
+  \mathrm{Com}(A)[123X.[133X
+  
+  
+  [1X4.2 [33X[0;0YExamples[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xi_o_psi := PreCompose( psi, i );[127X[104X
+    [4X[28X<A bounded morphism in Cochain complexes category over Category of matrices[128X[104X
+    [4X[28Xover Q with active lower bound 4 and active upper bound 6>[128X[104X
+    [4X[25Xgap>[125X [27XH5 := CohomologyFunctor( cochain_cat, 5 );[127X[104X
+    [4X[28X5-th cohomology functor in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( ApplyFunctor( H5, i_o_psi ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XF := CapFunctor( "double functor", matrix_category, matrix_category );[127X[104X
+    [4X[28Xdouble functor[128X[104X
+    [4X[25Xgap>[125X [27Xu := function( obj ) return DirectSum( [ obj, obj ] ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XAddObjectFunction( F, u );[127X[104X
+    [4X[25Xgap>[125X [27Xv := function( s, mor, r ) return DirectSumFunctorial( [ mor, mor ] ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XAddMorphismFunction( F, v );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( f );[127X[104X
+    [4X[28X[ [  1,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA split monomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( F, f ) );[127X[104X
+    [4X[28X[ [  1,  3,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XCoch_F := ExtendFunctorToCochainComplexCategories( F );[127X[104X
+    [4X[28XExtended version of double functor from Cochain complexes category over Category [128X[104X
+    [4X[28Xof matrices over Q to Cochain complexes category over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xpsi;[127X[104X
+    [4X[28X<A bounded morphism in Cochain complexes category over Category of matrices [128X[104X
+    [4X[28Xover Q with active lower bound 4 and active upper bound 6>[128X[104X
+    [4X[25Xgap>[125X [27XCoch_F_psi := ApplyFunctor( Coch_F, psi );[127X[104X
+    [4X[28X<A bounded morphism in Cochain complexes category over Category of matrices [128X[104X
+    [4X[28Xover Q with active lower bound 4 and active upper bound 6>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( psi[ 5 ] );[127X[104X
+    [4X[28X[ [  10 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Coch_F_psi[ 5 ] );[127X[104X
+    [4X[28X[ [  10,   0 ],[128X[104X
+    [4X[28X  [   0,  10 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNext  we  will compute the shift [23XC[3][123X. As we know the standard shift functor
+  may  change the sign of the differentials since [23Xd^i_{C[n]}=(-1)^n d^{i+n}_C[123X.
+  Hence if we don't want the signs to be changed we may use the unsigned shift
+  functor.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XT := ShiftFunctor( cochain_cat, 3 );[127X[104X
+    [4X[28XShift (3 times to the left) functor in Cochain complexes category over Category[128X[104X
+    [4X[28X of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XC;[127X[104X
+    [4X[28X<A not cyclic, bounded object in Cochain complexes category over Category of [128X[104X
+    [4X[28Xmatrices over Q with active lower bound 2 and active upper bound 7>[128X[104X
+    [4X[25Xgap>[125X [27XC_3 := ApplyFunctor( T, C );[127X[104X
+    [4X[28X<A not cyclic, bounded object in Cochain complexes category over Category of [128X[104X
+    [4X[28Xmatrices over Q with active lower bound -1 and active upper bound 4>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C^3 );[127X[104X
+    [4X[28X[ [  1,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA split monomorphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C_3^0 );[127X[104X
+    [4X[28X[ [  -1,  -3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XS := UnsignedShiftFunctor( cochain_cat, 3 );[127X[104X
+    [4X[28XUnsigned shift (3 times to the left) functor in Cochain complexes category over [128X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XC_3_unsigned := ApplyFunctor( S, C );[127X[104X
+    [4X[28X<A bounded object in Cochain complexes category over Category of matrices over [128X[104X
+    [4X[28XQ with active lower bound -1 and active upper bound 4>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C_3_unsigned^0 );[127X[104X
+    [4X[28X[ [  1,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA split monomorphism in Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YLet us demonstrate how to use the brutal truncations functors[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcochain_cat;[127X[104X
+    [4X[28XCochain complexes category over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xchain_cat := ChainComplexCategory( matrix_category );[127X[104X
+    [4X[28XChain complexes category over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xtrunc_leq_4 := BrutalTruncationAboveFunctor( cochain_cat, 4 );[127X[104X
+    [4X[28XFunctor of brutal truncation from above (C -> C^<= 4) in Cochain complexes [128X[104X
+    [4X[28Xcategory over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xtrunc_l_4 := BrutalTruncationAboveFunctor( chain_cat, 4 );[127X[104X
+    [4X[28XFunctor of brutal truncation from above (C -> C_< 4) in Chain complexes [128X[104X
+    [4X[28Xcategory over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xtrunc_g_4 := BrutalTruncationBelowFunctor( cochain_cat, 4 );[127X[104X
+    [4X[28XFunctor of brutal truncation from below (C -> C^> 4) in Cochain complexes [128X[104X
+    [4X[28Xcategory over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27Xtrunc_geq_4 := BrutalTruncationBelowFunctor( chain_cat, 4 );[127X[104X
+    [4X[28XFunctor of brutal truncation from below (C -> C_>= 4) in Chain complexes [128X[104X
+    [4X[28Xcategory over Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( trunc_leq_4, C );[127X[104X
+    [4X[28X<A bounded object in Cochain complexes category over Category of matrices over Q \[128X[104X
+    [4X[28Xwith active lower bound 2 and active upper bound 5>[128X[104X
+    [4X[25Xgap>[125X [27XApplyFunctor( trunc_g_4, C );[127X[104X
+    [4X[28X<A bounded object in Cochain complexes category over Category of matrices over Q \[128X[104X
+    [4X[28Xwith active lower bound 4 and active upper bound 7>[128X[104X
+  [4X[32X[104X
+  
+  [1X4.2-1 GoodTruncationAboveFunctor[101X
+  
+  [33X[1;0Y[29X[2XGoodTruncationAboveFunctor[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya functor[133X
+  
+  [33X[0;0YTo do.[133X
+  
+  
+  [1X4.3 [33X[0;0YNatural transformations[133X[101X
+  
+  [1X4.3-1 ExtendNaturalTransformationToChainComplexCategories[101X
+  
+  [33X[1;0Y[29X[2XExtendNaturalTransformationToChainComplexCategories[102X( [3Xeta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YThe  input  is  a  natural  transformation  [23X\eta:F\to  G[123X.  The output is its
+  extension to the chain complexes.[133X
+  
+  [1X4.3-2 ExtendNaturalTransformationToCochainComplexCategories[101X
+  
+  [33X[1;0Y[29X[2XExtendNaturalTransformationToCochainComplexCategories[102X( [3Xeta[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
+  
+  [33X[0;0YThe  input  is  a  natural  transformation  [23X\eta:F\to  G[123X.  The output is its
+  extension to the cochain complexes.[133X
+  
